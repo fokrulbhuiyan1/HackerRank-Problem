@@ -5,6 +5,10 @@ using namespace std;
 vector <int> climbingLeaderboard(vector <int> scores, vector <int> alice) {
     vector<int> result;
     reverse(alice.begin(), alice.end());
+    for(int i = 0;i<alice.size();i++){
+        cout<<alice[i]<<" ";
+    }
+    cout<<endl;
     int lastIndex = 0;
     int lastRank = 1;
 
@@ -19,12 +23,16 @@ vector <int> climbingLeaderboard(vector <int> scores, vector <int> alice) {
 
             else if (alice[i] < scores[j]) {
                 rank++;
+                cout<<"Rank increase: "<<rank<<endl;
             }
 
             if (scores[j] == scores[j+1] && rank != 1) {
                 rank--;
+                cout<<"Rank Less "<<rank<<endl;
             }
+            cout<<"Now rank J"<<j+1<<" "<<rank<<endl;
         }
+        cout<<"Now rank after j rank and index"<<rank<<" "<<lastIndex<<endl;
         result.push_back(rank);
         lastRank = rank;
     }
@@ -48,7 +56,7 @@ int main() {
     }
     vector <int> result = climbingLeaderboard(scores, alice);
     for (ssize_t i = 0; i < result.size(); i++) {
-        cout << result[i] << (i != result.size() - 1 ? "\n" : "");
+        cout << result[i] <<" ";
     }
     cout << endl;
 
